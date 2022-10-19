@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hover Sample</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      h1 {
+        color: darkslategrey;
+        width: fit-content;
+      }
+      #tooltip {
+        border: 1px solid darkslategrey;
+        border-radius: 4px;
+        color: darkslategrey;
+        width: fit-content;
+        padding: 8px;
+        margin: -70px 0 0 160px;
+        background-color: gold;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hover me</h1>
+    <script>
+      const body = document.querySelector('body')
+      const heading = document.querySelector('h1')
+      const tooltip = document.createElement('div')
+      tooltip.id = 'tooltip'
+      tooltip.innerText = 'Here I am!'
+      heading.addEventListener('mouseover', appendTooltip, false)
+      heading.addEventListener('mouseout', removeTooltip, false)
+      function appendTooltip() {
+        body.appendChild(tooltip)
+      }
+      function removeTooltip() {
+        body.removeChild(tooltip)
+      }
+    </script>
+  </body>
+</html>

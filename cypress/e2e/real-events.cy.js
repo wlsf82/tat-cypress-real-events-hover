@@ -1,0 +1,25 @@
+describe('Cypress Real Events lib - Hover', () => {
+  it('shows and hides the tooltip when hovering over and out the heading', () => {
+    cy.visit('src/index.html')
+    cy.contains('div', 'Here I am!').should('not.exist')
+    cy.get('h1').realHover()
+    cy.contains('div', 'Here I am!').should('be.visible')
+    cy.get('h1').next().realHover()
+    cy.contains('div', 'Here I am!').should('not.exist')
+  })
+
+  it('button and link change colors when hovered over', () => {
+    cy.visit('https://cac-tat.s3.eu-central-1.amazonaws.com/index.html')
+    cy.contains('button', 'Enviar')
+      .should('have.css', 'background-color', 'rgb(79, 196, 207)')
+      .and('have.css', 'color', 'rgb(24, 24, 24)')
+      .realHover()
+      .should('have.css', 'background-color', 'rgb(24, 24, 24)')
+      .and('have.css', 'color', 'rgb(79, 196, 207)')
+    cy.contains('a', 'Política de Privacidade')
+      .should('have.css', 'color', 'rgb(79, 196, 207)')
+      .and('have.css', 'text-decoration', 'underline solid rgb(79, 196, 207)')
+      .realHover()
+      .should('have.css', 'color', 'rgb(24, 24, 24)')
+  })
+})
